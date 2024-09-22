@@ -16,6 +16,11 @@ jobs:
     - name: Checkout my source code from github
       uses: actions/checkout@v4
 
-    - name: Analysing the code with pylint
-      run: |
-        docker build -t app:v1 .
+    - name: Build and Push Docker Image
+      uses: mr-smithers-excellent/docker-build-push@v4
+      with:
+        image: shkatara/prerna
+        registry: docker.io
+        username: shkatara
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        tags: inclass

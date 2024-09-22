@@ -2,5 +2,4 @@
 import time
 
 for i in range(10):
-    print("Hello World and this is a change in main.py")
-    time.sleep(1)
+    print("Prerna is the best and this is a change in main.py")
