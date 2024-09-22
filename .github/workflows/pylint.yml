@@ -1,6 +1,12 @@
 name: Pylint
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'Dockerfile'
+      - 'main.py'
 
 jobs:
   build:
@@ -10,20 +16,6 @@ jobs:
     - name: Checkout my source code from github
       uses: actions/checkout@v4
 
-    - name: Set up Python 3.8
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.8'
-
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pylint
-
-    - name: Hello there
-      run: |
-        echo Hi this is an agent
-
     - name: Analysing the code with pylint
       run: |
-        pylint main.py
+        docker build -t app:v1 .
